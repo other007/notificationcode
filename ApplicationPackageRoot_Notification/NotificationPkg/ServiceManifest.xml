@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ServiceManifest Name="NotificationPkg"
+                 Version="1.30.6"
+                 xmlns="http://schemas.microsoft.com/2011/01/fabric"
+                 xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <ServiceTypes>
+    <!-- This is the name of your ServiceType. 
+         The UseImplicitHost attribute indicates this is a guest executable service. -->
+    <StatelessServiceType ServiceTypeName="NotificationType" UseImplicitHost="true" />
+  </ServiceTypes>
+
+  <!-- Code package is your service executable. -->
+  <CodePackage Name="Code" Version="1.30.6">
+    <!-- The SetupEntryPoint is an optional element used to specify a
+         program to be executed before the service's code is launched. -->
+
+
+
+    <EntryPoint>
+      <ExeHost>
+        <Program>startup.sh</Program>
+
+        <WorkingFolder>CodePackage</WorkingFolder>
+        <!-- Uncomment to log console output (both stdout and stderr) to one of the
+             service's working directories. -->
+        <ConsoleRedirection FileRetentionCount="5" FileMaxSizeInKb="2048"/>
+      </ExeHost>
+    </EntryPoint>
+  </CodePackage>
+
+
+</ServiceManifest>
